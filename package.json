@@ -9,15 +9,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rarmatei/last-successful-commit-action.git"
+    "url": "git+https://github.com/tfonfara/last-successful-commit-action.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/rarmatei/last-successful-commit-action/issues"
-  },
-  "homepage": "https://github.com/rarmatei/last-successful-commit-action#readme",
+  "homepage": "https://github.com/tfonfara/last-successful-commit-action#readme",
   "dependencies": {
     "@actions/core": "^1.2.6",
     "@actions/github": "^4.0.0",
