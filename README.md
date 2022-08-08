@@ -14,6 +14,7 @@ why this would be useful.
 `branch`
 
 **Required** Branch to get last successful commit from (eg. [`${{ github.ref_name }}`](https://docs.github.com/en/actions/learn-github-actions/contexts#github-context)).
+
 **Default**: `main`
 
 `github_token`
