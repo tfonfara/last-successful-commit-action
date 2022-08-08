@@ -5,7 +5,7 @@ try {
   const octokit = github.getOctokit(core.getInput("github_token"));
   const [owner, repo] = process.env.GITHUB_REPOSITORY.split("/");
   octokit.actions
-    .listWorkflowRuns({
+    .listWorkflowRunsForRepo({
       owner,
       repo,
       workflow_id: core.getInput("workflow_id"),
