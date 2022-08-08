@@ -6,29 +6,29 @@ This is especially useful when we have a workflow where we need to know what cha
 in on a given branch between two commits, so we can run some tasks on those
 changes.
 
-Scroll down to the **Background** section below for more info around 
+Scroll down to the [background](#background) section below for more info around 
 why this would be useful.
 
 ## Inputs
 
-### `branch`
+`branch`
 
-**Required** Branch to get last successful commit from.
+**Required** Branch to get last successful commit from (eg. [`${{ github.ref_name }}`](https://docs.github.com/en/actions/learn-github-actions/contexts#github-context)).
 **Default**: `main`
 
-### `github_token`
+`github_token`
 
-**Required** Your GitHub access token (see Usage below).
+**Required** Your GitHub access token (see usage below).
 
-### `workflow_id`
+`workflow_id`
 
-**Required** ID or filename of the workflow (e.g. `deploy.yml`).
+**Required** ID or filename of the workflow (e.g. [`${{ github.workflow }}`](https://docs.github.com/en/actions/learn-github-actions/contexts#github-context)). See [docs](https://octokit.github.io/rest.js/v18#actions-list-workflow-runs).
 
 ## Outputs
 
-### `commit_hash`
+`commit_sha`
 
-Hash of the last successful commit.
+SHA of the last successful commit.
 
 ## Example usage
 
@@ -50,10 +50,10 @@ jobs:
       - uses: tfonfara/last-successful-commit-action@v1
         id: last_successful_commit
         with:
-          branch: 'master'
-          workflow_id: 'deploy.yml'
+          branch: master
+          workflow_id: deploy.yml
           github_token: ${{ secrets.GITHUB_TOKEN }}
-      - run: npm run nx affected -- --target=build --base=${{ steps.last_successful_commit.outputs.commit_hash }} --parallel --configuration=production
+      - run: npm run nx affected -- --target=build --base=${{ steps.last_successful_commit.outputs.commit_sha }} --parallel --configuration=production
 ```
 
 # Background

@@ -8730,7 +8730,7 @@ try {
     auth: core.getInput("github_token")
   });
   const [owner, repo] = process.env.GITHUB_REPOSITORY.split("/");
-  octokit.rest.actions.listWorkflowRunsForRepo({
+  octokit.rest.actions.listWorkflowRuns({
     owner,
     repo,
     workflow_id: core.getInput("workflow_id"),
