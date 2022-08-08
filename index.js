@@ -9,16 +9,16 @@ try {
       owner,
       repo,
       workflow_id: core.getInput("workflow_id"),
-      status: "success",
+      status: "completed",
+      conclusion: "success",
       branch: core.getInput("branch"),
-      event: "push",
     })
     .then((res) => {
       const lastSuccessCommitHash =
         res.data.workflow_runs.length > 0
-          ? res.data.workflow_runs[0].head_commit.id
+          ? res.data.workflow_runs[0].head_sha
           : "";
-      core.setOutput("commit_hash", lastSuccessCommitHash);
+      core.setOutput("commit_sha", lastSuccessCommitHash);
     })
     .catch((e) => {
       core.setFailed(e.message);
