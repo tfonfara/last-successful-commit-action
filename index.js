@@ -17,7 +17,11 @@ try {
     const head_sha = data.workflow_runs.length > 0 ? data.workflow_runs[0].head_sha : "";
     core.setOutput("commit_sha", head_sha);
   }).catch((e) => {
-    core.setFailed(e.message);
+    if (e.status === 404) {
+      core.setOutput("commit_sha", "");
+    } else {
+      core.setFailed(e.message);
+    }
   }); 
 } catch (e) {
   core.setFailed(e.message);
