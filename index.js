@@ -14,10 +14,15 @@ try {
     conclusion: "success",
     branch: core.getInput("branch"),
   }).then(({ data }) => {
-    const head_sha = data.workflow_runs.length > 0 ? data.workflow_runs[0].head_sha : "";
-    core.setOutput("commit_sha", head_sha);
+    if (data.workflow_runs.length > 0) {
+      core.setOutput("commit_sha", data.workflow_runs[0].head_sha);
+    } else {
+      core.warning("Unable to find last successful commit");
+      core.setOutput("commit_sha", "");
+    }
   }).catch((e) => {
     if (e.status === 404) {
+      core.warning("Unable to find last successful commit");
       core.setOutput("commit_sha", "");
     } else {
       core.setFailed(e.message);
