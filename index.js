@@ -21,13 +21,8 @@ try {
       core.setOutput("commit_sha", "");
     }
   }).catch((e) => {
-    if (e.status === 404) {
-      core.warning("Unable to find last successful commit");
-      core.setOutput("commit_sha", "");
-    } else {
-      core.setFailed(e.message);
-    }
+    core.setFailed(e);
   }); 
 } catch (e) {
-  core.setFailed(e.message);
+  core.setFailed(e);
 }
