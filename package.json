@@ -1,6 +1,6 @@
 {
   "name": "last-successful-commit-action",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -16,8 +16,8 @@
   "license": "ISC",
   "homepage": "https://github.com/tfonfara/last-successful-commit-action#readme",
   "dependencies": {
-    "@actions/core": "^1.10.0",
-    "@octokit/rest": "^19.0.7",
-    "@vercel/ncc": "^0.36.1"
+    "@actions/core": "1.10.1",
+    "@octokit/rest": "20.0.2",
+    "@vercel/ncc": "0.38.1"
   }
 }
